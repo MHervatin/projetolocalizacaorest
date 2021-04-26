@@ -1,7 +1,6 @@
 package com.testequalificacao.cadastroDeLocalizacao.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,13 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Classe responsável por armzenar os dados de endereço.
- * 
+ * Classe responsável por armazenar os dados de endereço.
+ *
  * @author Mateus
  */
 @Entity
 public class Endereco implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,7 +23,7 @@ public class Endereco implements Serializable {
     private String streetName;
 
     @Column(nullable = false)
-    private BigDecimal number;
+    private Double number;
 
     private String complement;
 
@@ -43,16 +42,12 @@ public class Endereco implements Serializable {
     @Column(nullable = false)
     private String zipcode;
 
-    private BigDecimal latitude;
+    private Double latitude;
 
-    private BigDecimal longitude;
+    private Double longitude;
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getStreetName() {
@@ -63,11 +58,11 @@ public class Endereco implements Serializable {
         this.streetName = streetName;
     }
 
-    public BigDecimal getNumber() {
+    public Double getNumber() {
         return number;
     }
 
-    public void setNumber(BigDecimal number) {
+    public void setNumber(Double number) {
         this.number = number;
     }
 
@@ -116,22 +111,23 @@ public class Endereco implements Serializable {
     }
 
     public void setZipcode(String zipcode) {
+        zipcode = zipcode.replace("-", "");
         this.zipcode = zipcode;
     }
 
-    public BigDecimal getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public BigDecimal getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 }
